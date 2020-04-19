@@ -21,7 +21,16 @@ steps:
     includePreviewVersions: true
 
 #Build src\About\About\About
-- script: dotnet build --configuration $(buildConfiguration) **/*.csproj
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet publish'
+  inputs:
+    command: publish
+    publishWebProjects: false
+    projects: '**/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
+    zipAfterPublish: false
+    modifyOutputPath: true
+- script: dotnet build  **/*.csproj
   displayName: 'dotnet build $(buildConfiguration)'
 
 # Run all tests with "/p:CollectCoverage=true /p:CoverletOutputFormat=cobertura" to generate the code coverage file
