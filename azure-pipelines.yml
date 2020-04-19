@@ -18,5 +18,5 @@ steps:
   inputs:
     version: 3.1.x
     includePreviewVersions: true
-- script: dotnet build --configuration $(buildConfiguration)
+- script: dotnet build --configuration $(buildConfiguration) src/About/About/About.csproj
   displayName: 'dotnet build $(buildConfiguration)'
