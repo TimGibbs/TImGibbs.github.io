@@ -16,7 +16,7 @@ steps:
 - task: UseDotNet@2
   displayName: 'Installing .NET Core SDK...'
   inputs:
-    version: 3.2.x
+    version: 3.1.x
     includePreviewVersions: true
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
