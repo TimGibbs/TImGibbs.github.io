@@ -16,7 +16,7 @@ namespace About.Tests
 
         [Fact]
 
-        public async Task StyleSheetsInHead()
+        public void StyleSheetsInHead()
         {
             var expectedStyleSheets = new[]
             {
@@ -42,7 +42,7 @@ namespace About.Tests
         }
 
         [Fact]
-        public async Task ScriptsInBody()
+        public void ScriptsInBody()
         {
             var expectedScripts = new[]
             {
@@ -68,7 +68,7 @@ namespace About.Tests
         }
 
         [Fact]
-        public async Task Title()
+        public void Title()
         {
             var doc = new HtmlDocument();
             doc.Load(IndexLocation);
