@@ -20,7 +20,7 @@ steps:
     version: 3.1.x
     includePreviewVersions: true
 
-#Build src\About\About\About
+#Build projects
 - task: DotNetCoreCLI@2
   displayName: 'dotnet publish'
   inputs:
@@ -30,8 +30,6 @@ steps:
     arguments: '--configuration $(buildConfiguration)'
     zipAfterPublish: false
     modifyOutputPath: true
-- script: dotnet build  **/*.csproj
-  displayName: 'dotnet build $(buildConfiguration)'
 
 # Run all tests with "/p:CollectCoverage=true /p:CoverletOutputFormat=cobertura" to generate the code coverage file
 - task: DotNetCoreCLI@2
