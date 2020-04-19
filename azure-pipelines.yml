@@ -20,8 +20,8 @@ steps:
     version: 3.1.x
     includePreviewVersions: true
 
-#Build
-- script: dotnet build --configuration $(buildConfiguration) src/**/**/*.csproj
+#Build src\About\About\About
+- script: dotnet build --configuration $(buildConfiguration) **/*.csproj
   displayName: 'dotnet build $(buildConfiguration)'
 
 # Run all tests with "/p:CollectCoverage=true /p:CoverletOutputFormat=cobertura" to generate the code coverage file
@@ -30,14 +30,14 @@ steps:
   inputs:
     command: test
     arguments: '--configuration $(BuildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura'
-    projects: 'src/**/**/*.Tests.csproj'
+    projects: '**/*.Tests.csproj'
     nobuild: true
 
 # Generate the report using ReportGenerator (https://github.com/danielpalme/ReportGenerator)
 # First install the tool on the machine, then run it
 - script: |
     dotnet tool install -g dotnet-reportgenerator-globaltool
-    reportgenerator -reports:$(Build.SourcesDirectory)/src/**/**/coverage.cobertura.xml -targetdir:$(Build.SourcesDirectory)/CodeCoverage -reporttypes:HtmlInline_AzurePipelines;Cobertura
+    reportgenerator -reports:$(Build.SourcesDirectory) **/coverage.cobertura.xml -targetdir:$(Build.SourcesDirectory)/CodeCoverage -reporttypes:HtmlInline_AzurePipelines;Cobertura
   displayName: Create Code coverage report
 
 # Publish the code coverage result (summary and web site)
