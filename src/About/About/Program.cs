@@ -7,6 +7,7 @@ using Blazorise.Bootstrap;
 using Blazorise.Icons.FontAwesome;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using System.Runtime.CompilerServices;
 
 namespace About
 {
@@ -17,23 +18,33 @@ namespace About
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
 
-            builder.Services.AddBaseAddressHttpClient();
+            PopulateServiceCollection(builder.Services);
 
-            builder.Services
+            var host = builder.Build();
+
+            PopulateServiceProvider(host.Services);
+
+            await host.RunAsync();
+        }
+
+        public static void PopulateServiceCollection(IServiceCollection services)
+        {
+            services
+                .AddBaseAddressHttpClient()
                 .AddBlazorise(options =>
                 {
                     options.ChangeTextOnKeyPress = true;
                 })
                 .AddBootstrapProviders()
-                .AddFontAwesomeIcons();
+                .AddFontAwesomeIcons(); ;
 
-            var host = builder.Build();
+        }
 
-            host.Services
+        public static void PopulateServiceProvider(IServiceProvider provider)
+        {
+            provider
                 .UseBootstrapProviders()
                 .UseFontAwesomeIcons();
-
-            await host.RunAsync();
         }
     }
 }
