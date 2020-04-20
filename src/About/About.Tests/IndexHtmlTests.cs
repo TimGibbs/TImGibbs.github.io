@@ -21,7 +21,7 @@ namespace About.Tests
             var expectedStyleSheets = new[]
             {
                 "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css",
-                "https://use.fontawesome.com/releases/v5.12.0/css/all.css",
+                "https://use.fontawesome.com/releases/v5.12.1/css/all.css",
                 "_content/Blazorise.Bootstrap/blazorise.bootstrap.css",
                 "_content/Blazorise/blazorise.css",
                 "_content/BlazorPro.Spinkit/spinkit.min.css",
