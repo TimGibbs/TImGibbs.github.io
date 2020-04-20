@@ -1,9 +1,60 @@
-﻿<Container class="text-center">
-    <a href="https://www.linkedin.com/in/timothy-gibbs-49215681/" target="_blank">
-        <i class="fab fa-linkedin" style="font-size:48px;color:#0e76a8"></i>
+﻿
+<Container Class=@Class>
+    <a href="https://www.linkedin.com/in/timothy-gibbs-49215681/" target="_blank" class="@hyperlink">
+        <i class="fab fa-linkedin @linkedinStyle"></i>
     </a>
 
-    <a href="https://www.instagram.com/gazebomalarkey/" target="_blank">
-        <i class="fab fa-instagram-square" style="font-size: 48px; color: #405DE6"></i>
+    <a href="https://www.instagram.com/gazebomalarkey/" target="_blank" class="@hyperlink">
+        <i class="fab fa-instagram @instagramStyle"></i>
+    </a>
+
+    <a href="https://github.com/TimGibbs/" target="_blank" class="@hyperlink">
+        <i class="fab fa-github @githubStyle"></i>
     </a>
 </Container>
+
+
+<Styled @bind-Classname="@instagramStyle">
+    font-size: 48px;
+    background: #d6249f;
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+</Styled>
+
+<Styled @bind-Classname="@linkedinStyle">
+    font-size: 48px;
+    color: #0e76a8;
+</Styled>
+<Styled @bind-Classname="@githubStyle">
+    font-size: 48px;
+    color: #333333;
+</Styled>
+
+<Styled @bind-Classname="@hyperlink">
+    text-decoration:  none;
+
+    &:link  {
+    text-decoration:  none;
+    }
+    &:visited  {
+    text-decoration:  none;
+    }
+    &:hover  {
+    text-decoration:  none;
+    }
+    &:active  {
+    text-decoration:  none;
+    }
+</Styled>
+
+@code{
+    private string instagramStyle;
+    private string linkedinStyle;
+    private string githubStyle;
+    private string hyperlink;
+    [Parameter]
+    public string Class { get; set; } = "text-center";
+}
+
+
