@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Blazorise;
 using Blazorise.Bootstrap;
 using Blazorise.Icons.FontAwesome;
+using BlazorStyled;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -34,7 +35,9 @@ namespace About
                     options.ChangeTextOnKeyPress = true;
                 })
                 .AddBootstrapProviders()
-                .AddFontAwesomeIcons();
+                .AddFontAwesomeIcons()
+                .AddBlazorStyled();
+
 
         }
 
